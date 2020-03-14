@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CrazyPythonNotes.iml" filepath="$PROJECT_DIR$/.idea/CrazyPythonNotes.iml" />
+      <module fileurl="file://D:/anaconda/project/python_one/.idea/python_one.iml" filepath="D:/anaconda/project/python_one/.idea/python_one.iml" />
+    </modules>
+  </component>
+</project>
