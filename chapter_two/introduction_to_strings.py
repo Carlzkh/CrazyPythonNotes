@@ -79,4 +79,18 @@ print(str10)
 
 '''
 字节串
+将字符串转成字节串：
+1、字符串都是ASCII码，在字符串前加b
+2、用bytes()函数，默认使用utf-8编码
+3、使用字符串本身的encode()方法，默认使用utf-8编码
+
+字符集：编码表
+ASCII码，1个字节，8位，支持256个字符
+Unicode码，2个字节，16位，支持65535个字符
 '''
+b1 = bytes()
+b2 = b''
+b3 = b'hello'
+b4 = bytes('我爱python', encoding='utf-8')
+b5 = '学习python很有趣'.encode('utf-8')
+print(b1, b2, b3, b4, b5, sep='\n')
