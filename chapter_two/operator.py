@@ -76,14 +76,21 @@ not
 
 '''
 三目运算符
+True_statement if expression else False_statement
+'''
+a = input('a')
+b = input('b')
+print('a>b') if a > b else print('a<=b')
 
 '''
+in
+not in 
+判断子串在字符串内，子序列在序列内
 
-
-
-
-
-
+'''
+b = 'abcdefghijklmn'
+print('abcd' in b)
+print('abcd' not in b)
 
 
 
