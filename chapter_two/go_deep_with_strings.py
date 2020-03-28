@@ -119,6 +119,7 @@ str3 = '  Carl is a good man  '
 print(str3.split())
 print(str3.split(None, 2))
 list1 = str3.split()
+print(list1)
 print('_'.join(list1))
 
 
