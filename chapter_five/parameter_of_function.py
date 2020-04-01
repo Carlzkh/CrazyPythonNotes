@@ -90,18 +90,41 @@ bar(**dict1)
 
 '''
 5、参数传递机制：值传递
+对于可变数据类型来说（列表、字典等），值传递传递的是地址值，数据对象(列表和字典)是会被改变的
 '''
 
 
+def swap(x, y):
+    x, y = y, x
+    print('swap函数内部a=', x, 'b=', y)
 
 
+a = 1
+b = 2
+swap(a, b)
+print('主程序中a=', a, 'b=', b)
 
 
+def swap2(dw):
+    dw['a'], dw['b'] = dw['b'], dw['a']
+    print('swap函数内部a=', dw['a'], 'b=', dw['b'])
 
 
+dw = {'a': 1, 'b': 2}
+swap2(dw)
+print('主程序中a=', dw['a'], 'b=', dw['b'])
 
 
+'''
+6、变量的作用域
+globals()
+locals()，在全局范围内调用，效果与globals()一样
+vars(object),不传参数，效果与locals()一样
 
+函数内部定义的局部变量与全局变量名称重复时，局部变量会遮蔽全局变量
+此时有两个方法访问全局变量：
+1、使用globals()函数
+2、用global关键字申明全局变量：此时即使在函数内也可以修改全局变量
 
-
-
+'''
+print(globals())
