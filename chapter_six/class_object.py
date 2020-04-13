@@ -24,6 +24,10 @@ print(a.name, a.age)
 a.say('hello')
 a.run('hello', 7)
 a.eat('apple')
+a.height = 180  # 为对象新加实例变量
+del a.name  # 删除对象的实例变量
+print(a.height)
+# print(a.name)  # 对象的实例变量被删除，访问会报错
 
 
 def info(self):
