@@ -26,7 +26,7 @@ class Bird:
 foo()
 print(bar)
 
-Bird.foo(1)
+Bird.foo(2)
 print(Bird.bar)
 
 
