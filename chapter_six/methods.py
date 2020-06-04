@@ -26,11 +26,42 @@ class Bird:
 foo()
 print(bar)
 
-Bird.foo(1)
+Bird.foo(2)
 print(Bird.bar)
+print('==========================================================================')
 
 
+def decorator(fn):
+    # 定义 个嵌套函数
+    def barr(*args):
+        print('＝＝＝1＝＝＝', args)
+        n = args[0]
+        print('＝＝＝2＝＝＝', n * (n-1))
+        # 查看传给 foo 函数的 fn 函数
+        print(fn.__name__)
+        fn(n * (n - 1))
+        print(' * ' * 15)
+        return fn(n * (n - 1))
+    return barr
 
+
+'''下面的装饰效果相当于 foo(my_test)
+my test 将会被替换（装饰〉成该语句的返回值
+由于 foo （）函数返回 bar 函数，因此 funB 就是 bar
+'''
+
+
+@decorator
+def my_test(a):
+    print('==my test 函数＝＝', a)
+
+
+# 打印 my test 函数，：每看到实际上是 bar 函数
+print(my_test)
+# <function foo . <locals>.bar at Ox00000000021FABF8>
+# 下面代码看上去是调用 my_test （），其实是调用 bar （）函数
+my_test(10)
+my_test(6, 5)
 
 
 
