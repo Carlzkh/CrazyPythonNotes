@@ -38,9 +38,9 @@ print('年龄10位:%10d' % userAge)
 print('指定左对齐：%-d' % userAge)
 print('数值带着符号：%+d' % userAge)
 print('最短10位，不够补0：%010d' % userAge)
-Π = 3.141592654
-print('最大八位，保留两位小数：%8.2f' % Π)
-print('最大八位，保留两位小数，左边补零：%08.2f' % Π)
+pai = 3.141592654
+print('最大八位，保留两位小数：%8.2f' % pai)
+print('最大八位，保留两位小数，左边补零：%08.2f' % pai)
 print('最大八位，保留两位：%8.2s' % userName)
 print('最大八位，左对齐，保留两位：%-8.2s' % userName)
 

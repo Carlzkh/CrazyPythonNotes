@@ -7,7 +7,7 @@ class Person:
         self.age = age
 
     # @staticmethod    设置静态方法的话，self也需要传值
-    def say(self, words):
+    def say(self, words):  # 不使用self属性的话，函数会被建议为静态函数，所以函数名下有下划线
         print(words)
 
     @staticmethod
