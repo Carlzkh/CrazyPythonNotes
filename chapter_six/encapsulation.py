@@ -1,14 +1,11 @@
 """
 encapsulation：封装
-
-
-
-
 """
 
 
 class User:
-    def hide(self):
+    def hide(self, name):
+        self.name = name
         print('示范隐藏的 hide 方法')
 
     def getname(self):
@@ -33,7 +30,7 @@ class User:
 
 u = User()
 # 对 name 属性赋值，实际上调用 setname （）方法
-u.name = 'fwe'  # 引发 ValueError 错误：用户名长度必须在 3-8 之间
+u.name = 'fw'  # 引发 ValueError 错误：用户名长度必须在 3-8 之间
 
 
 
