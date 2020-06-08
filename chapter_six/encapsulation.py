@@ -30,7 +30,7 @@ class User:
 
 u = User()
 # 对 name 属性赋值，实际上调用 setname （）方法
-u.name = 'fw'  # 引发 ValueError 错误：用户名长度必须在 3-8 之间
+u.name = 'fwp'  # 引发 ValueError 错误：用户名长度必须在 3-8 之间
 
 
 
