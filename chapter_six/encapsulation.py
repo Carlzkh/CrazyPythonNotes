@@ -1,11 +1,14 @@
 """
 encapsulation：封装
+
+
+
+
 """
 
 
 class User:
-    def hide(self, name):
-        self.name = name
+    def hide(self):
         print('示范隐藏的 hide 方法')
 
     def getname(self):
