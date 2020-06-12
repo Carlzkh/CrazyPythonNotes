@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "D:/CrazyPythonNotes/chapter_seven/traceback_test2.py", line 26, in <module>
+    main()
+  File "D:/CrazyPythonNotes/chapter_seven/traceback_test2.py", line 10, in main
+    first_method()
+  File "D:/CrazyPythonNotes/chapter_seven/traceback_test2.py", line 14, in first_method
+    second_method()
+  File "D:/CrazyPythonNotes/chapter_seven/traceback_test2.py", line 18, in second_method
+    third_method()
+  File "D:/CrazyPythonNotes/chapter_seven/traceback_test2.py", line 22, in third_method
+    raise SelfException('自定义异常信息')
+SelfException: 自定义异常信息
