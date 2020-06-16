@@ -13,23 +13,34 @@ width height 属性赋值的时候，千万不要在__setattr__()方法中再次
 
 
 class Rectangle:
-    def __init__(self, width , height):
+    def __init__(self, width, height):
         self.width = width
         self.height = height
-    def __setattr__(self, name , value):
+
+    def __setattr__(self, name, value):
+        """
+        在类中对属性进行赋值操作时，python会自动调用__setattr__()函数，来实现对属性的赋值。
+        但是重写__setattr__()函数时要注意防止无限递归的情况出现，一般解决办法有两种，
+        一是用通过super()调用__setattr__()函数，
+        二是利用字典操作对相应键直接赋值。
+        """
         print('一一设置%s属性一一' % name)
         if name == 'size':
             self.width, self.height = value
-        else :
-            self.__dict__[name] =value
+        else:
+            self.__dict__[name] = value  # 方法二
+            # super.__setattr__(self, name, value)  # 方法一，不加self会报错，加了又波浪线提示不合规，不知道怎么解决
+            # self.name = value  再次对width和height赋值会调用__setattr__()方法，造成无限循环
+
     def __getattr__(self, name):
         print('一一读取%s属性一一' % name)
-        if name =='size':
+        if name == 'size':
             return self.width, self.height
         else:
             raise AttributeError
+
     def __delattr__(self, name):
-        print('一一删除在%s属性一一' % name)
+        print('__删除在%s属性__' % name)
         if name == 'size':
             self.__dict__['width'] = 0
             self.__dict__['height'] = 0
@@ -39,5 +50,5 @@ rect = Rectangle(3, 4)
 print(rect.size)
 rect.size = 6, 8
 print(rect.width)
-del rect .size
+del rect.size
 print(rect.size)
