@@ -8,7 +8,6 @@ width height 属性赋值，还是对 size 属性赋值，该方法都会被触�
 要处理对 ize 性赋值的情形，也要处理对 width height 属性赋值的情形。尤其是处理对
 width height 属性赋值的时候，千万不要在__setattr__()方法中再次对 width height 赋值，
 因为对这两个属性赋值会再次触发__setattr__()方法，这样会让程序陷入死循环中。
-
 """
 
 
