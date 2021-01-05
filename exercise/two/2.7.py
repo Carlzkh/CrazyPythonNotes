@@ -5,3 +5,9 @@
 6 -
 程序将会输出： fkjava-org
 """
+s = input('输入字符串：')
+i = int(input('修改位置：'))
+r = input('代替字符：')
+new = s.replace(s[i], r, 1)
+print(new)
+
