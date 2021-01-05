@@ -28,8 +28,6 @@ print(type(a), type(b), type(c), type(d))
 只有浮点型才可以使用科学计数法，如：512E2是浮点数51200.0而不是整型51200
 
 
-
-
 '''
 evaluate = 5e3
 print(type(evaluate))
@@ -41,30 +39,4 @@ print(type(evaluate))
 compx = a + bj
 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
