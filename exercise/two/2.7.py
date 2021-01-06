@@ -8,6 +8,13 @@
 s = input('输入字符串：')
 i = int(input('修改位置：'))
 r = input('代替字符：')
-new = s.replace(s[i], r, 1)
+# new = s.replace(s[i], r, 1)
+# print(new)
+# new_str = s.split(s[i])
+# new_print = r.join(new_str)
+# print(new_print)
+new_start = s[0:i]
+new_end = s[i+1:]
+# print(new_end,new_start)
+new = new_start + r + new_end
 print(new)
-
