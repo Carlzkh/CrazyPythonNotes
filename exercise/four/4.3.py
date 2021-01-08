@@ -12,6 +12,20 @@
 依此类推。
 
 """
+n = int(input("输入一个奇数："))
+list1 = []
+for i in range(1, n * n + 1):
+    list1.append(i)
+x = 0
+y = n
+for i in range(n):
+    for j in range(x, y):
+        print(list1[j] + ' ', end='')
+    x += n
+    if y + n <= n*n:
+        y += n
+
+    print()
 
 
 
