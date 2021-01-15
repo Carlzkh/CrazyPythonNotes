@@ -10,5 +10,15 @@ try:
         x, y = str1.split(' ')
         result = int(x) // int(y)
         print(result)
-except Exception as e:
+except (WindowsError, Exception) as e:
+    # 访问异常的错误编号和详细信息
     print(e.args)
+    # 访问异常的错误编号
+    # print(e.errno)
+    # 访问异常的详细信息
+    # print(e.strerror)
+
+'''
+exception异常类没有errno和strerror属性
+WindowsError异常类没有ZeroDivisionError异常
+'''
