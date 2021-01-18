@@ -48,3 +48,4 @@ class PlayingCards:
 
 puke = PlayingCards()
 print(puke.__dict__)
+print(puke.__contains__(('A', 'spades')))
