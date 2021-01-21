@@ -8,3 +8,11 @@ aa
 (1, 2)
 (4, 5)
 """
+import re
+strings = input('输入一个字符串：')
+sub_str = input('输入一个子串：')
+m1 = re.search(sub_str, strings)
+if m1 is not None:
+    print(m1.span())
+else:
+    print((-1, -1))

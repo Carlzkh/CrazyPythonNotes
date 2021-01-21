@@ -5,3 +5,8 @@ Sun 10 May 2015 13:54:36 - 0000
 程序应该输出：
 25200
 """
+import time
+print(7*3600)
+string1 = 'Sun 10 May 2015 13:54:36'
+struct_time_one = time.strptime(string1, '%a %d %b %Y %H:%M:%S')
+print(struct_time_one)

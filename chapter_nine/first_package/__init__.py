@@ -7,7 +7,7 @@ from . import print_shape
 from .print_shape import *
 # 从当前包中导入 billi 呵模块
 from . import billing
-# 从 billing 中导入所有程序单元到 fk_pa ckage
+# 从 billing 中导入所有程序单元到 fk_package
 from . billing import *
 # 从当前包中导入 arithmetic_chart 模块
 from . import arithmetic_chart
