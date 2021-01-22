@@ -1580,3 +1580,77 @@ print(len(list_java_and_python))
 print(list_java_and_python)
 
 
+"""
+8. 计算用户输入的两个带时区的时间戳字符串之间相差的秒数。例如用户输入：
+Sun 10 May 2015 13:54:36 - 0700
+Sun 10 May 2015 13:54:36 - 0000
+程序应该输出：
+25200
+"""
+import time
+string_time1 = input('输入时间1：')
+string_time2 = input('输入时间2：')
+# string_time1 = 'Sun 10 May 2015 13:54:36 - 0700'
+# string_time2 = 'Sun 10 May 2015 13:54:36 - 0000'
+string_time1_slice = string_time1[:-7]
+string_time2_slice = string_time2[:-7]
+string_time1_zone = string_time1[-4:-2]
+string_time2_zone = string_time2[-4:-2]
+
+struct_time1 = time.strptime(string_time1_slice, '%a %d %b %Y %H:%M:%S')
+struct_time2 = time.strptime(string_time2_slice, '%a %d %b %Y %H:%M:%S')
+print(struct_time1)
+time1_sec = int(time.mktime(struct_time1)) + int(string_time1_zone) * 3600
+time2_sec = int(time.mktime(struct_time2)) + int(string_time2_zone) * 3600
+print(time1_sec - time2_sec)
+
+"""
+9. 提示用户输入 1个字符串，程序要输出该字符串中出现次数最多的 3个字符，以及对应的
+出现次数。
+"""
+string1 = input('输入一个字符串：')
+dict1 = {}
+for i in string1:
+    if i not in dict1:
+        dict1[i] = 1
+    else:
+        dict1[i] += 1
+
+
+list_values = list(dict1.values())
+list_values.sort()
+print(list_values[-3:])
+print(dict1)
+print(list(dict1.keys())[list(dict1.values()).index(3)])
+for i in range(1, 4):
+    print(list(dict1.keys())[list(dict1.values()).index(list_values[-i])] + ': ' + str(list_values[-i]))
+
+
+
+"""
+10. 定义一 fibonacci(n) 函数，该函数返回包含n个元素 斐波那契数列的列表。再使用 lambda
+表达式定义 1个平方函数，程序最终输出斐波那契数列的前 n 个元素的平方值。
+"""
+
+
+def fibonacci(n):
+    list11 = []
+    first = 0
+    sec = 1
+    for i in range(n):
+        first, sec = sec, first + sec
+        list11.append(first)
+    return list11
+
+
+list1 = fibonacci(10)
+print(list1)
+# list2 = []
+# for j in list1:
+#     x = lambda j: j * j
+#     list2.append(x)
+# print(list2)
+y = map(lambda x: x*x, list1)
+print(y.__dir__())  # y是一个map对象，只有方法，没有属性
+print([e for e in y])
+

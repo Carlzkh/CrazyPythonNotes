@@ -16,3 +16,11 @@ def fibonacci(n):
 
 list1 = fibonacci(10)
 print(list1)
+# list2 = []
+# for j in list1:
+#     x = lambda j: j * j
+#     list2.append(x)
+# print(list2)
+y = map(lambda x: x*x, list1)
+print(y.__dir__())  # y是一个map对象，只有方法，没有属性
+print([e for e in y])
