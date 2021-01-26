@@ -12,7 +12,7 @@ GAME_HEIGHT = 680
 BOARD_X = 230
 BOARD_Y = 600
 BOARD_WIDTH = 80
-BALL_RADIUS = 9
+BALL_RADIUS = 30
 
 
 class App:
@@ -28,13 +28,12 @@ class App:
         self.board_x = BOARD_X
         self.cv = Canvas(root, background='white', width=GAME_WIDTH, height=GAME_HEIGHT)
         self.bms = []
-
         self.init_widgets()
         self.ball = self.cv.create_image(self.cur_x, self.cur_y, image=self.bms[self.ball_index])
         self.board = self.cv.create_rectangle(BOARD_X, BOARD_Y, BOARD_X + BOARD_WIDTH,
                                               BOARD_Y + 20, width=0, fill='light blue')
-        self.vx = random.randint(3, 6)  # 方向的速度
-        self.vy = random.randint(5, 10)  # 方向的速度
+        self.vx = random.randint(6, 10)  # 方向的速度
+        self.vy = random.randint(8, 12)  # 方向的速度
         # 通过定时器指定 O.ls 之后执行 move_ball 阪数
         self.t = threading.Timer(0.1, self.move_ball)
         self.t.start()
