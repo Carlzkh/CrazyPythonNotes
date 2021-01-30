@@ -1,0 +1,1656 @@
+"""
+1. 搭建自己的 Python 开发环境。
+2、编写第 Python 程序，运行该程序时输出“ Hello World!"
+3. 使用 Python 交互式解释器执行加法、减法、乘法、除法 角函数等常见的数学运算
+"""
+
+"""
+3. 从标准输入读取两个整数并打印两行，其中第一行输出两个整数的整除结果；第二行输出
+两个整数的带小数的除法结果。不需要执行任何四舍五入或格式化操作。
+"""
+a = input('输入第一个数A：')
+b = input('输入第二个数B：')
+print("AB整除的结果: %d" % (int(a)//int(b)), end='\n')
+print("A除以B的结果: %.2f " % (int(a)/int(b)))
+
+"""
+4. 从标准输入读取两个整数并打印三行，其中第一行包含两个数的和；第二行包含两个数的
+差（第一个数减第二个数）：第三行包含两个数的乘积结果
+"""
+a = input('输入第一个数A：')
+b = input('输入第二个数B：')
+print("AB的和: %d" % (int(a) + int(b)), end='\n')
+print("AB的差: %d" % (int(a) - int(b)), end='\n')
+print("AB的积: %d" % (int(a) * int(b)), end='\n')
+
+"""
+6. 给定任意一个整数，打印出该整数的十进制、八进制、十六进制（大写）、二进制形式的字符串。
+"""
+i = int(input('输入任意整数：'))
+print('该整数的十进制：%d' % int(i))
+print('该整数的八进制：%s' % oct(i))
+print('该整数的十六进制：%s' % hex(i))
+print('该整数的二进制：%s' % bin(i))
+
+
+"""
+7. 通过学习我们知道str是不可变的，本程序要实现一个功能：用户输入一个字符串，修改该
+字符串中哪个位置的字符，程序就会输出修改后的结果。比如用户输入
+'fkjava.org'
+6 -
+程序将会输出： fkjava-org
+"""
+s = input('输入字符串：')
+i = int(input('修改位置：'))
+r = input('代替字符：')
+new_start = s[0:i]
+new_end = s[i+1:]
+new = new_start + r + new_end
+print(new)
+
+
+"""
+1. 提示用户输入 N个字符串 ，将它们封装成元组，然后计算并输入该元组乘以3的结果，
+再计算并输出该元组加上（ 'fkjava'，'crazyit'）的结果
+"""
+list1 = []
+N = int(input("输入多少个元素？"))
+for i in range(N):
+    element = input("输入%d个字符串，第%d个" % (N, (i+1)))
+    list1.append(element)
+
+tuple1 = tuple(list1)
+tuple2 = tuple1 * 3
+print("元组乘以3：", tuple2)
+tuple3 = tuple1 + ('fkjava', 'crazyit')
+print("元组加元组：", tuple3)
+
+
+"""
+2. 给定 list ，将该列表的从 start 到 end 的所有元素复制到另一个 list
+"""
+list1 = []
+N = int(input("输入个数N："))
+for i in range(N):
+    element = input("输入%d个元素，第%d个" % (N, (i+1)))
+    list1.append(element)
+
+list2 = []
+for i in range(N):
+    list2.append(list1[i])
+
+print(list2)
+print(id(list2))
+print(list1)
+print(id(list1))
+
+"""
+3. 用户输入 一个整数 n ，生成长度为 n的列表，将 n个随机数放入列表中
+"""
+import random
+N = int(input("输入整数N："))
+list1 = []
+for i in range(N):
+    list1.append(random.randint(0, 100))
+print(list1)
+
+"""
+4. 用户输入 一个整数 n，生成长度为 n的列表，将 n个随机的奇数放入列表中
+"""
+import random
+N = int(input("输入整数N："))
+list1 = []
+for i in range(N):
+    n = random.randint(0, 100)
+    if n % 2 != 0:
+        list1.append(n)
+    else:
+        list1.append(n+1)
+print(list1)
+
+
+"""
+5. 用户输入 一个整数 n，生成长度为 n的列表，将 n个随机的大写字符放入列表中
+  生成一个指定长度的随机字符串，其中
+  string.digits=0123456789
+  string.ascii_letters=abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+  str_list = [random.choice(string.digits + string.ascii_letters) for i in range(randomlength)]
+  random_str = ''.join(str_list)
+"""
+import random
+import string
+
+N = int(input("输入整数N："))
+str_list = [random.choice(string.ascii_letters) for i in range(N)]
+random_str = ''.join(str_list)
+print(random_str)
+print(random_str.upper())
+list1 = list(random_str.upper())
+print(list1)
+
+"""
+6. 用户输入 N个字符扇，将这些字符串收集到列表中，然后去除其中重复的宇符串后输出列表
+"""
+import random
+N = int(input("输入整数N："))
+list1 = []
+for i in range(N):
+    list1.append(random.randint(0, 10))
+print(list1)
+
+# list1.sort()
+j = 0
+for i in range(len(list1)):
+
+    if list1.count(list1[j]) > 1:
+        for k in range(len(list1)):
+            if k < len(list1) and list1[k] == list1[j]:
+                del list1[j]
+    elif j + 1 < len(list1):
+        j = j + 1
+    else:
+        break
+
+
+print(list1)
+
+"""
+7. 用户输入以空格分隔的多个整数，程序将这些整数转换成元组元素，并输出该元组及其 Hash
+值（使用内置的 hash 函数）。
+"""
+s = input("输入多个整数，以空格分隔：")
+list1 = s.split(' ')
+tuple1 = tuple(list1)
+Hash = hash(tuple1)
+print(tuple1, Hash)
+
+"""
+8.用户随机输入 N个大写字母，程序使用 dict 统计用户输入的每个字母的次数
+"""
+s = input("随机输入N个大写字母：")
+
+dict1 = {s[0]: s.count(s[0])}
+
+j = 1
+for i in range(len(s)):
+    if j + 1 <= len(s) and s[j] != s[i]:
+        dict1[s[j]] = s.count(s[j])
+        j += 1
+
+
+print(dict1)
+
+"""1. 使用循环输出九九乘法表。输 出如下结果：
+1 x 1 = 1
+1 × 2 = 2, 2 × 2 = 4
+1 × 3 = 3, 2 × 3 = 6, 3 × 3= 9
+1 × 9 = 9, 2 × 9 = 18, 3 × 9 = 27, … , 9 x 9 = 81
+
+"""
+for i in range(1, 10):
+    for j in range(1, i+1):
+        print("%s × %s =" % (j, i), i*j, end='')
+        if i != j:
+            print(', ', end='')
+    print(end="\n")
+
+"""
+2. 使用循环输出等腰三角形 例如给定4 输出如下结果
+   *
+  ***
+ *****
+*******
+
+"""
+n = int(input('输入一个整数：'))
+for i in range(1, n+1):
+    print(' '*(n-i), end='')
+    print('*' * (2*i-1))
+
+
+"""
+3. 给定奇数 输出（横、坚、斜的总和相等）
+08 O1 06
+03 05 07
+04 09 02
+给定奇数 输出（横、坚、斜的总和相等）
+17 24 O1 08 15
+23 05 07 14 16
+04 06 13 20 22
+10 12 19 21 03
+11 18 25 02 09
+依此类推。
+
+"""
+n = int(input("输入一个奇数："))
+list1 = []
+for i in range(1, n * n + 1):
+    list1.append(i)
+x = 0
+y = n
+for i in range(n):
+    for j in range(x, y):
+        print(list1[j] + ' ', end='')
+    x += n
+    if y + n <= n*n:
+        y += n
+
+    print()
+
+
+"""
+4. 使用循环输出菱形 例如用户输入 7（用户输入偶数，则提示不能打印〉 输出如下结果
+   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+"""
+n = int(input('输入一个奇数：'))
+if n % 2 != 0:
+    for i in range(1, n+1):
+        if i < (n+1) / 2:
+            print(' '*((n+1)//2-i), end='')
+            print('*'*(2*i-1))
+        elif i == (n+1) / 2:
+            print('*'*(2*i-1))
+        else:
+            print(' '*(i-(n+1)//2), end='')
+            print('*'*(2*(n-i)+1))
+else:
+    print('用户输入的是偶数，不能打印！')
+
+
+"""
+5. 使用循环输出空心菱形 例如用户输入 7（用户输入偶数， 提示不能打印) 输出如下结果：
+   *
+  * *
+ *   *
+*     *
+ *   *
+  * *
+   *
+
+"""
+n = int(input('输入一个奇数：'))
+if n % 2 != 0:
+    for i in range(1, n+1):
+        if i == 1:
+            print(' '*((n+1)//2-i), end='')
+            print('*', end='')
+            print(' '*(2*i-1-2))
+        elif i < (n+1) / 2:
+            print(' '*((n+1)//2-i), end='')
+            print('*', end='')
+            print(' '*(2*i-1-2), end='')
+            print('*')
+        elif i == (n+1) / 2:
+            print('*', end='')
+            print(' '*(2*i-1-2), end='')
+            print('*')
+        elif n > i > (n+1)/2:
+            print(' '*(i-(n+1)//2), end='')
+            print('*', end='')
+            print(' '*(2*(n-i)-1), end='')
+            print('*')
+        else:
+            print(' '*(i-(n+1)//2), end='')
+            print('*', end='')
+            print(' '*(2*(n-i)-1))
+else:
+    print('用户输入的是偶数，不能打印！')
+
+
+"""
+6. 户输入自己的成绩，程序会自动判断该成绩的类型 成绩>=90分用 A 表示，80~ 89 分用B表示，70~79 分用C 表示，其他的用 D表示
+
+"""
+s = int(input('输入成绩：'))
+if s >= 90:
+    print('A')
+elif 80 <= s <= 89:
+    print('B')
+elif 70 <= s <= 79:
+    print('C')
+else:
+    print('D')
+
+
+
+"""
+7. 判断 101~200 有多少个素数，并输出所有的质数
+
+"""
+list1 = []
+
+for i in range(101, 201):
+    list1.append(i)
+
+print(list1)
+
+
+list2 = []
+
+for i in range(101, 201):
+    for j in range(2, i):
+        if i % j == 0:
+            break
+        else:
+            if j == i-1:
+                print('这个是质数：', i)
+                list2.append(i)
+            else:
+                continue
+
+
+print('总数：', len(list2))
+print('列表：', list2)
+
+"""
+8、打印出所有的“水仙花数” 所谓“水仙花数”，是指 一个三位数，其各位数字的立方和等
+于该数本身 例如， 153是 个“水仙花数”，因为 153=1^3+5^3+3^3
+
+"""
+for i in range(100, 1000):
+    a = i // 100
+    b = (i // 10) % 10
+    c = i % 10
+    if a*a*a + b*b*b + c*c*c == i:
+        print('这个是水仙花数：', i)
+
+
+"""
+9. 输入一行字符， 分别统计出其中英文字母 、空格、数字和其他字符的个数
+s.isalnum() 所有字符都是数字或者字bai母，du为真返回 Ture，否则zhi返回 False。（重点，这是字dao母数字一起判zhuan断的！！）
+s.isalpha() 所有字符都是字母，为真返回 Ture，否则返回 False。（只判断字母）
+s.isdigit() 所有字符都是数字，为真返回 Ture，否则返回 False。（只判断数字）
+s.islower() 所有字符都是小写，为真返回 Ture，否则返回 False。
+s.isupper() 所有字符都是大写，为真返回 Ture，否则返回 False。
+s.istitle() 所有单词都是首字母大写，为真返回 Ture，否则返回 False。
+s.isspace() 所有字符都是空白字符，为真返回 Ture，否则返回 False。
+"""
+s = input('输入一串字符串：')
+english = 0
+space = 0
+number = 0
+other = 0
+for i in range(len(s)):
+    if s[i].isalpha():
+        print('这个是英文字母：', s[i])
+        english += 1
+    elif s[i].isdigit():
+        print('这个数字：', s[i])
+        number += 1
+    elif s[i].isspace():
+        print('这个是空格：', s[i])
+        space += 1
+    else:
+        print('这个是其他字符：', s[i])
+        other += 1
+
+print('英文字母：', english, '数字：', number, '空格：', space, '其他：', other,sep='个\n')
+
+
+"""
+10. 打印出如下所示的近似圆，只要给定不同的半径，圆的大小就会随之发生改变（如果需要
+使用复杂的数学运算 ，则可使 Python math 模块）
+              * *
+       *                 *
+    *                       *
+  *                            *
+  *                            *
+  *                            *
+  *                            *
+   *                          *
+      *                    *
+         *               *
+                * *
+
+"""
+import turtle
+import math
+window = turtle.Turtle()
+
+
+def c(windows, r, angle):
+    height = 2 * math.pi * r / 360
+    for i in range(angle):
+        windows.fd(height)
+        windows.lt(1)
+
+
+c(window, 100, 360)
+
+#怎么测试自己代码话的圆半径为100？
+#window.lt(90)
+#window.fd(100)
+#window.lt(90)
+#window.fd(100)
+#将这4句代码添加即可
+# turtle.mainloop()
+
+
+ """
+11. 给定3
+----c----
+--c-b-c--
+c-b-a-b-c
+--c-b-c--
+----c----
+
+给定4输出：
+------d------
+----d-c-d----
+--d-c-b-c-d--
+d-c-b-a-b-c-d
+--d-c-b-c-d--
+----d-c-d----
+------d------
+
+"""
+english = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+n = int(input('输入整数：'))
+row = 2*n - 1
+for i in range(1, 2*n):
+    print('-'*((4*n-3)//2), end='')
+    print(english[i-1], end='')
+    print('-'*((4*n-3)//2))
+
+
+"""
+12. 完善数字转人民币读法的程序。
+
+"""
+
+'''
+把一个浮点数分解成整数部分和小数部分字符串
+num 是需要被分解的浮点数
+返回分解出来的整数部分和小数部分
+第一个数组元素是整数部分，第二个数组元素是小数部分
+'''
+
+
+def divide(num1):
+    # 将一个浮点数强制类型转换为 int 类型， 即得到它的整数部分
+    integer1 = int(num1)
+    # 浮点数减去整数部分，得到小数部分，小数部分乘以 100 后再取整 得到 位小数
+    fraction1 = round((num1 - integer1) * 100)
+    # 下面把整数转换为字符串
+    return str(integer1), str(fraction1)
+
+
+han_list = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+unit_list = ['十', '百', '千']
+
+'''
+把一个4位的数字字符串变成汉字字符串
+num_str 是需要被转换的4位数字字符串
+返回4位数字字符串被转换成汉字字符串
+'''
+
+
+def four_to_chinese_str(num_str):
+    result = ""
+    num_len = len(num_str)
+    # 依次遍历数字字符串的每一位数字
+    for i in range(num_len):
+        # 把字符串转换成数值
+        num1 = int(num_str[i])
+        # 如果不是最后一位数字 而且数字不是零，则需要添加单位（千、百、十）
+        if i != num_len - 1:
+            if num1 != 0:
+                result += han_list[num1] + unit_list[num_len-2-i]
+            else:
+                if num_str[i+1] == '0':
+                    pass
+                else:
+                    result += han_list[num1]
+        # 否则不要添加单位
+        # elif num_str[i-1] == '0' and num_str[i] == '0':
+        #    pass
+        else:
+            if num1 != 0:
+                result += han_list[num1]
+            else:
+                pass
+    return result
+
+
+def fraction_to_chinese_str(fraction1):
+    num1 = int(fraction1[0])
+    num2 = int(fraction1[1])
+    return han_list[num1]+'角'+han_list[num2]+'分'
+
+
+'''
+数字字符串变成汉字字符串
+num_ tr 是需要被转换的数字字符串
+返回数字字符串被转换成汉字字符串
+'''
+
+
+def integer_to_str(num_str):
+    str_len = len(num_str)
+    if str_len > 12:
+        print('数字太大，翻译不了')
+        return
+    # 如果大于8，包含单位 “亿”
+    elif str_len > 8:
+        return four_to_chinese_str(num_str[:-8])+'亿' +\
+            four_to_chinese_str(num_str[-8:-4])+'萬' +\
+            four_to_chinese_str(num_str[-4:])+'元'
+    # 如果大于4位，包含单位“万”
+    elif str_len > 4:
+        return four_to_chinese_str(num_str[:-4])+'萬' +\
+            four_to_chinese_str(num_str[-4:])+'元'
+    else:
+        return four_to_chinese_str(num_str)+'元'
+
+
+def fraction_to_str(fraction1):
+    # fraction1 = divide(num_str)[1]
+    return fraction_to_chinese_str(fraction1)
+
+
+num = float(input('请输入一个浮点数 ：'))
+# 测试把一个浮点数分解成整数部分和小数部分
+integer, fraction = divide(num)
+# 测试把一个 位的数字字符串变成汉字字符串
+# print(integer_to_str(integer))
+# print(integer, fraction)
+# print(fraction_to_chinese_str(fraction))
+print(integer_to_str(integer)+fraction_to_chinese_str(fraction))
+
+
+"""
+13. 完善控制台五子棋程序。
+"""
+# 定义棋盘的大小
+BOARD_SIZE = 15
+# 定义一个 维列表来充当棋盘
+board = []
+
+
+def init_board():
+    # 为每个元素赋值”＋
+    for i in range(BOARD_SIZE):
+        row = ['+'] * BOARD_SIZE
+        board.append(row)
+
+
+# 在控制台输出棋盘的方法
+def print_board():
+    # 打印每个列表元素
+    for i in range(BOARD_SIZE):
+        for j in range(BOARD_SIZE):
+            # 打印列表元素后不换行
+            print (board[i][j], end='')
+        # 每打印完一行列表元素后输出 个换行符
+        print()
+
+
+init_board()
+print_board()
+inputStr = input('请输入您下棋的坐标，应以 x,y 的格式')
+while inputStr is not None:
+    # 将用户输入的字符串以逗号（ ）作为分｜满符，分隔成两个字符串
+    x_str, y_str = inputStr.split(',')
+    # 为对应的列表元素赋值”·
+    board[int(y_str) - 1][int(x_str) - 1] = '·'
+
+    '''
+    电脑随机生成两个整数，作为电脑下棋的坐标 赋｛直给 board 列表
+    还涉及
+    1. 坐标的有效性，只能是数字，不能超出棋盘范围
+    2.下的棋的点，不能重复下棋
+    3. 每次下棋后，需要扫描谁赢了
+    '''
+    print_board()
+    inputStr = input('请输入您下棋的坐标，应以x,y的格式:\n')
+
+
+"""
+1. 定义一个函数，该函数可接收一个 list 作为参数，该函数使用直接选择排序对 list
+"""
+
+
+def direct_descending_order(list_to_be_sorted):
+    for j in range(len(list_to_be_sorted)):
+        for i in range(len(list_to_be_sorted)):
+            if i+1 < len(list_to_be_sorted):
+                if list_to_be_sorted[i] > list_to_be_sorted[i+1]:
+                    continue
+                else:
+                    list_to_be_sorted[i], list_to_be_sorted[i+1] = list_to_be_sorted[i+1], list_to_be_sorted[i]
+    list_sorted = []
+    for k in range(len(list_to_be_sorted)):
+        list_sorted.append(list_to_be_sorted[k])
+    return list_sorted
+
+
+def direct_ascending_order(list_to_be_sorted):
+    for j in range(len(list_to_be_sorted)):
+        for i in range(len(list_to_be_sorted)):
+            if i+1 < len(list_to_be_sorted):
+                if list_to_be_sorted[i] < list_to_be_sorted[i+1]:
+                    continue
+                else:
+                    list_to_be_sorted[i], list_to_be_sorted[i+1] = list_to_be_sorted[i+1], list_to_be_sorted[i]
+    list_sorted = []
+    for k in range(len(list_to_be_sorted)):
+        list_sorted.append(list_to_be_sorted[k])
+    return list_sorted
+
+
+list1 = [8, 3, 1, 4, 6, 5, 9, 7]
+list2 = direct_descending_order(list1)
+list3 = direct_ascending_order(list1)
+print(list1, list2, list3)
+
+
+"""
+2. 定义一个函数，该函数可接收一个 list 作为参数，该函数使用冒泡排序对 list
+"""
+
+
+def bubble_ascending_sort(list_to_be_sorted):
+    list_sorted = []
+    for i in range(len(list_to_be_sorted)):
+        list_min = min(list_to_be_sorted)
+        list_sorted.append(list_min)
+        list_to_be_sorted.remove(list_min)
+    return list_sorted
+
+
+def bubble_descending_sort(list_to_be_sorted):
+    list_sorted = []
+    for i in range(len(list_to_be_sorted)):
+        list_max = max(list_to_be_sorted)
+        list_sorted.append(list_max)
+        list_to_be_sorted.remove(list_max)
+    return list_sorted
+
+
+list1 = [8, 3, 1, 4, 6, 9, 2, 7]
+list2 = bubble_ascending_sort(list1)
+list3 = [8, 3, 1, 4, 6, 9, 2, 7]
+list4 = bubble_descending_sort(list3)
+print(list1, list2, list3, list4, sep='\n')
+
+
+"""
+3. 定义一个 is leap(year 函数，该函数可判断 year 是否为闰年。若是闰年，则返回 True ；否
+则返回 False
+"""
+
+
+def is_leap(year):
+    if year % 4 == 0:
+        if year % 100 != 0:
+            return True
+        else:
+            if year % 400 == 0:
+                return True
+            else:
+                return False
+    else:
+        return False
+
+
+print(is_leap(1900))
+print(is_leap(2000))
+print(is_leap(2001))
+print(is_leap(2004))
+
+
+"""
+4. 定义一个 count_str_ char( my_ str1 ）函数，该函数返回参数字符串中包含多少个数字、 少个
+英文字母、多少个空白字符、多少个其他字符
+"""
+
+
+def count_str_char(input_string):
+    english = 0
+    space = 0
+    number = 0
+    other = 0
+    for i in range(len(input_string)):
+        if input_string[i].isalpha():
+            # print('这个是英文字母：', input_string[i])
+            english += 1
+        elif input_string[i].isdigit():
+            # print('这个数字：', input_string[i])
+            number += 1
+        elif input_string[i].isspace():
+            # print('这个是空格：', input_string[i])
+            space += 1
+        else:
+            # print('这个是其他字符：', input_string[i])
+            other += 1
+    return english, space, number, other
+
+
+input_string1 = input("输入一个字符串：")
+english1, space1, number1, other1 = count_str_char(input_string1)
+print('该字符串含英文字母%d个，空格%d个，数字%d个，其他字符%d个' % (english1, space1, number1, other1))
+
+"""
+5. 定义 fn(n)函数，该函数返回1~n 的立方和，即求 1+2*2*2叮叮叮＋… 句句
+"""
+
+
+def fn(n):
+    sum_of_cubes = 0
+    for i in range(1, n+1):
+        sum_of_cubes += i*i*i
+    return sum_of_cubes
+
+
+sum1 = fn(1)
+sum2 = fn(2)
+sum3 = fn(3)
+print(sum1, sum2, sum3)
+
+
+"""
+6. 定义 fn(n ）函数，该函数返回n的阶乘
+"""
+
+
+def fn(n):
+    factorial = 1
+    for i in range(1, n+1):
+        factorial *= i
+    return factorial
+
+
+print(fn(1))
+print(fn(2))
+print(fn(3))
+print(fn(4))
+
+
+"""
+7. 定义 个函数，该函数可接收 list 作为参数，该函数用于去除 list 中重复的元素
+"""
+
+
+def list_removal_duplicates(list_to_be_removal_duplicates):
+    list_removed_duplicate = []
+    for i in range(len(list_to_be_removal_duplicates)):
+        if list_to_be_removal_duplicates[i] in list_removed_duplicate:
+            continue
+        else:
+            list_removed_duplicate.append(list_to_be_removal_duplicates[i])
+    return list_removed_duplicate
+
+
+list1 = [1, 1, 2, 5, 2, 5, 6, 8]
+list2 = ['a', 1, 2, 'a', 2, 5, 'c', 8]
+list3 = ['!', 1, 2, 5, '!', 5, '!', 8]
+print(list_removal_duplicates(list1))
+print(list_removal_duplicates(list2))
+print(list_removal_duplicates(list3))
+
+
+"""
+8. 定义 fn(n）函数，该函数返回 1个包含n个不重复的 0~100 之间整数的元组
+"""
+import random
+list_init = [x for x in range(101)]
+# print(list_init)
+
+
+def fn(n):
+    target_list = []
+    for i in range(n):
+        element = random.choice(list_init)
+        target_list.append(element)
+        list_init.remove(element)
+    return tuple(target_list)
+
+
+print(fn(1))
+print(fn(5))
+print(fn(10))
+print(fn(46))
+
+
+"""
+9. 定义 fn(n ）函数，该函数返回 1个包含 n个不重复的大写字母的元组
+"""
+import random
+
+
+def fn(n):
+    list_init = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                 'U', 'V', 'W', 'X', 'Y', 'Z']
+    target_list = []
+    for i in range(n):
+        element = random.choice(list_init)
+        target_list.append(element)
+        list_init.remove(element)
+    return tuple(target_list)
+
+
+print(fn(1))
+print(fn(5))
+print(fn(10))
+print(fn(24))
+
+"""
+10. 定义 fn(n）函数，其中 n表示输入 n行n列的矩阵（数的方阵〉 在输出时，先输出
+列的矩阵，再输出该矩阵的转置形式 例如，当参数为 时，先输出matrix：
+123
+456
+789
+再输出Transposed matrix：
+147
+258
+369
+"""
+
+
+def fn(n):
+    list_init = list(range(1, n*n+1))
+    # print(list_init)
+    for i in range(n):
+        for j in range(n):
+            print(list_init[j], end='')
+        for k in range(n):
+            list_init.remove(list_init[0])
+        print()
+
+
+fn(3)
+
+
+  """
+1. 个学生类，提供 name age gender phone address 、email 等属性，为学生类提供
+带所有成员变量的构造器，为学生类提供方法，用于描绘吃、喝、玩、睡等行为。
+"""
+
+
+class Student:
+    def __init__(self, name, age, gender, phone, address, email):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.phone = phone
+        self.address = address
+        self.email = email
+
+    def eat(self, food):
+        print('%s吃了%s' % (self.name, food))
+
+    def drink(self, drinks):
+        print('%s喝了%s' % (self.name, drinks))
+
+    def play(self, games):
+        print('%s正在玩%s' % (self.name, games))
+
+    def sleep(self):
+        print('%s睡觉了！' % self.name)
+
+
+student1 = Student('张三', 18, '男', '15215537653', '上海市黄浦区', 'haha@qq.com')
+student1.eat('apple')
+student1.drink('金徽酒')
+student1.play('英雄联盟')
+student1.sleep()
+
+   """
+2.利用第 1题定义的 Student 类，定义 个列表保存 Student 对象作为通讯录数据 。程序
+可通过 name email address 查询，如果找不到数据，则进行友好提示
+"""
+
+
+class Student:
+    def __init__(self, name, age, gender, phone, address, email):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.phone = phone
+        self.address = address
+        self.email = email
+
+
+def query_by_name(name):
+    for i in range(len(students)):
+        if students[i].name == name:
+            return students[i]
+        else:
+            pass
+    return '查无此人！'
+
+
+def query_by_address(address):
+    for i in range(len(students)):
+        if students[i].address == address:
+            return students[i]
+        else:
+            pass
+    return '查无此地址！'
+
+
+def query_by_email(email):
+    for i in range(len(students)):
+        if students[i].email == email:
+            return students[i]
+        else:
+            pass
+    return '查无此邮箱！'
+
+
+students = []
+
+if __name__ == '__main__':
+    while True:
+        student_name = input('输入姓名：')
+        if student_name == 'quit':
+            print('学生输入完毕！')
+            break
+        student_age = input('输入年龄：')
+        student_gender = input('输入性别：')
+        student_phone = input('输入电话：')
+        student_address = input('输入地址：')
+        student_email = input('输入邮箱：')
+        student = Student(student_name, student_age, student_gender, student_phone, student_address, student_email)
+        students.append(student)
+
+    student_searched_by_name = query_by_name('张三')
+    print(student_searched_by_name.phone)
+    student_searched_by_email = query_by_email('qq@qq.com')
+    print(student_searched_by_email.name)
+    student_searched_by_address = query_by_address('上海市桂箐路7号1号楼6楼')
+    print(student_searched_by_address.age)
+
+    print(query_by_name('张三q'))
+    print(query_by_email('qqq@qq.com'))
+    print(query_by_address('q上海市桂箐路7号1号楼6楼'))
+
+
+
+
+"""
+3. 定义代表二维坐标系上某个点的 Point 类（包括 x,y两个属性），为该类提供 个方法用
+于计算两个 Point 之间 的距离 再提供一个方法用于判断 Point 组成的三角形是 、锐角还
+是直角三角形
+"""
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def distance(self, point1):
+        x = point1.x - self.x
+        y = point1.y - self.y
+        return pow(pow(x, 2) + pow(y, 2), 0.5)
+
+    def triangles_type(self, point1, point2):
+        a = self.distance(point1)
+        b = point1.distance(point2)
+        c = point2.distance(self)
+        # print('初始abc', a, b, c)
+
+        if a >= b:
+            a, b = b, a
+            if b > c:
+                b, c = c, b
+        else:
+            if b > c:
+                b, c = c, b
+        # print('排序abc：', a, b, c)
+
+        if a + b == c:
+            print('三点共线，不是三角形！')
+        else:
+            if a * a + b * b > c * c:
+                print('此三角形是锐角三角形！')
+            elif a * a + b * b == c * c:
+                print('此三角形是直角三角形！')
+            else:
+                print('此三角形是钝角三角形！')
+
+
+point_a = Point(0, 1)
+point_b = Point(1, 2)
+point_c = Point(4, 3)
+print(point_a.distance(point_b))
+point_a.triangles_type(point_b, point_c)
+point_b.triangles_type(point_a, point_c)
+point_c.triangles_type(point_a, point_b)
+point_a.triangles_type(point_c, point_b)
+point_b.triangles_type(point_c, point_a)
+point_c.triangles_type(point_b, point_a)
+point_c.triangles_type(point_b, point_b)
+
+"""
+4. 定义代表三维笛卡尔坐标系上某 个点的 Point 类（包括 x，y，z三个属性），为该类定义一
+个方法，可接收b，c，d三 个参数，用于计算当前点、b，c 组成的面与 b，c，d组成的面之间的
+夹角。提示 cos 夹角 = (X.Y) ／|X||Y|， 其中 X=AB✖ BC, Y=BC× CD, X 的点积， AB✖BC
+代表 AB BC 的叉乘
+"""
+import numpy
+
+
+class Point:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def vector_quantity(self, point1):
+        x = point1.x - self.x
+        y = point1.y - self.y
+        z = point1.z - self.z
+        return x, y, z
+
+    def plane_included_angle(self, b, c, d):
+        ab = self.vector_quantity(b)
+        bc = b.vector_quantity(c)
+        cd = c.vector_quantity(d)
+        x = numpy.cross(ab, bc)
+        y = numpy.cross(bc, cd)
+        return numpy.dot(x, y)/(abs(numpy.linalg.norm(x))*abs(numpy.linalg.norm(y)))
+
+
+point_a = Point(1, 2, 3)
+point_b = Point(2, 1, 2)
+point_c = Point(3, 4, 1)
+point_d = Point(4, 2, 3)
+print(point_a.plane_included_angle(point_b, point_c, point_d))
+
+
+  """
+5. 定义交通工具、汽车、火车、飞机这些类，注意它们的继承关系 ，为这些类提供构造器
+"""
+
+
+class Vehicle:
+    def __init__(self, name, speed):
+        self.name = name
+        self.speed = speed
+
+    def run(self):
+        print('%s以%s的速度跑着！' % (self.name, self.speed))
+
+
+class Car(Vehicle):
+    pass
+
+
+class Train(Vehicle):
+    def __init__(self, carriage, name, speed):
+        super().__init__(name, speed)
+        self.carriage = carriage
+
+
+class Plant(Vehicle):
+    def __init__(self, company, name, speed):
+        super().__init__(name, speed)
+        self.company = company
+
+
+a_vehicle = Vehicle('bus', 60)
+a_car = Car('BMW', 120)
+a_train = Train(16, '复兴号', '240km/h')
+a_plant = Plant('东方航空', '波音747', 1000)
+
+print(a_vehicle.name, a_car.speed, a_train.carriage, a_plant.company)
+a_train.run()
+
+
+"""
+1. 提示用户输入 一个N表示用户接下来要输入N个宇符串，程序尝试将用户输入的每一个
+字符串 用空格分割成两个整数，并结算 这两个整数整除的结果 。要求 使用异常处理机制来处理用
+户输入的各种错误情况，并提示用户重新输入。
+"""
+try:
+    n = int(input('输入一个整数N：'))
+    for i in range(n):
+        str1 = input('输入一个字符串：')
+        x, y = str1.split(' ')
+        result = int(x) // int(y)
+        print(result)
+except (WindowsError, Exception) as e:
+    # 访问异常的错误编号和详细信息
+    print(e.args)
+    # 访问异常的错误编号
+    # print(e.errno)
+    # 访问异常的详细信息
+    # print(e.strerror)
+
+'''
+exception异常类没有errno和strerror属性
+WindowsError异常类没有ZeroDivisionError异常
+'''
+
+
+
+
+"""
+2. 提示用户输入 1个整数，如果用户输入的整数是奇数，则输出“有趣”；如果用户输入的整
+数是偶数，且在 2~5 之间，则打印“没意思”；如果用户输入的整数是偶数，且在 6~20 之间，则
+输出“有趣”；如果输入的整数是其他偶数，则打印“没意思”。要求 ：使用异常处理机制来处理用
+户输入的各种错误情况
+"""
+try:
+    n = int(input('输入一个整数：'))
+    if n % 2 != 0:
+        print('有趣')
+    else:
+        if 2 <= n <= 5:
+            print('没意思')
+        elif 6 <= n <= 20:
+            print('有趣')
+        else:
+            print('没意思')
+except Exception as e:
+    print(e.args)
+
+
+
+"""
+3.提供 1个字符串元组，程序要求元组中每一个元素的长度都在 5~20 之间：否则， 程序
+发异常。
+"""
+
+
+class LengthException(BaseException):
+    pass
+
+
+try:
+    str1 = input('输入一个字符串元组：')
+    list1 = str1.split(' ')
+    tuple1 = tuple(list1)
+    for i in range(len(tuple1)):
+        if 5 <= len(tuple1[i]) <= 20:
+            pass
+        else:
+            raise LengthException('元素长度不在5~20之间')
+except Exception as e:
+    print(e.args)
+
+
+
+
+
+"""
+4. 提示用户输入 x1,y1,x2，y2,x3,y3 六个数值，分别代表 3个点的坐标，程序判断这 3个点
+是否在同 1条直线上。要求 使用异常处理机制处理用户输入的各种错误情况，如果三个点不在同
+条直线上，则程序出现异常
+"""
+
+"""
+1. 自定义 1个序列，该序列按顺序包含 52 张扑克牌，分别是黑桃、红心、草花、方块的2~A
+要求：提供序列的各种操作方法
+"""
+import collections
+
+Card = collections.namedtuple('Card', ['value', 'color'])
+
+
+def check_key(key):
+    if not isinstance(key, int):
+        raise TypeError('索引值必须是整数')
+    if key < 0:
+        raise IndexError("索引值必须是非负整数")
+    if key >= 52:
+        raise IndexError('索引值不能超过52')
+
+
+class PlayingCards:
+    colors = 'spades hearts clubs diamonds'.split(' ')
+    values = [str(n) for n in range(2, 11)] + list('JQKA')
+
+    def __init__(self):
+        self.__cards = [Card(value, color) for color in self.colors
+                        for value in self.values]
+
+    def __len__(self):
+        return 52
+
+    def __getitem__(self, key):
+        check_key(key)
+        return self.__cards[key]
+
+    def __contains__(self, item):
+        if item in self.__cards:
+            return True
+        else:
+            return False
+
+    def __setitem__(self, key, value):
+        check_key(key)
+        self.__cards[key] = value
+
+    def __delitem__(self, key):
+        check_key(key)
+        del self.__cards[key]
+
+
+puke = PlayingCards()
+print(puke.__dict__)
+print(puke.__contains__(('A', 'spades')))
+
+
+
+
+
+
+
+"""
+2. 自定义 1个序列，该序列按顺序包含所有三位数（如 100 101 102 。要 提供序列的
+各种操作方法。
+"""
+
+
+def check_key(key):
+    if not isinstance(key, int):
+        raise TypeError('索引值必须是整数')
+    if key < 0:
+        raise IndexError("索引值必须是非负整数")
+    if key >= 900:
+        raise IndexError('索引值不能超过900')
+
+
+class ThreeDigits:
+    def __init__(self):
+        self.__digits = [x for x in range(100, 1000)]
+
+    def __len__(self):
+        return 900
+
+    def __getitem__(self, key):
+        check_key(key)
+        return self.__digits[key]
+
+    def __contains__(self, item):
+        if item in self.__digits:
+            return True
+        else:
+            return False
+
+    def __setitem__(self, key, value):
+        check_key(key)
+        self.__digits[key] = value
+
+    def __delitem__(self, key):
+        check_key(key)
+        del self.__digits[key]
+
+
+puke = ThreeDigits()
+print(puke.__dict__)
+print(puke.__contains__(100))
+puke.__setitem__(899, 'kk')
+print(puke._ThreeDigits__digits)  # 私有变量（__digits）可以通过下划线加类名来访问，不可以直接访问
+print(puke.__dir__())
+
+
+"""
+3. 自定义 1个迭代器，该迭代器分别返回 1+2, 1+2+3 …的累积和
+"""
+
+
+class CumulativeSum:
+    def __init__(self):
+        self.first = 1
+        self.second = 2
+        self.cumulative_sum = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.cumulative_sum, self.second = self.cumulative_sum+self.second, self.second+1
+        return self.cumulative_sum
+
+
+cumulative_sum = CumulativeSum()
+print(next(cumulative_sum))
+print(next(cumulative_sum))
+print(next(cumulative_sum))
+for i in cumulative_sum:
+    if i <= 100:
+        print(i)
+    else:
+        break
+
+
+"""
+4. 自定义 1个生成器，该生成器可按顺序返回 52 张扑克牌 分别是黑桃、红心、草花、方块的2~A
+spades：黑桃♠， hearts：红桃♥， clubs：梅花♣， diamonds：方片♦
+"""
+colors = 'spades hearts clubs diamonds'.split(' ')
+values = [str(n) for n in range(2, 11)] + list('JQKA')
+
+
+def playing_cards():
+    for i in range(4):
+        for j in range(13):
+            card_next = colors[i]+values[j]
+            yield card_next
+
+
+card_ = playing_cards()
+print(list(card_))  # 可用list()或tuple()将生成器能生成的所有值转换成列表或元组，也可用如下的循环输出。
+# for k in range(52):
+#     print(next(card_))
+
+
+"""
+5. 定义 1个生成器，可依次返回1, 2, 3, …的阶乘
+factorial:阶乘
+"""
+
+
+def factorial():
+    base = 2
+    factorial_ = 1
+    while base <= 10:
+        factorial_, base = base * factorial_, base + 1
+    # base += 1
+        yield factorial_
+
+
+card = factorial()
+print(list(card))
+
+
+
+"""
+7. 自定义 1个代表 2维坐标系上某个点的 Point 类（包括 两个属性），为 Point 类提供自
+定义的减法运算符支持，计算结果返回两点之间的距离
+"""
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __sub__(self, other):
+        x = other.x - self.x
+        y = other.y - self.y
+        return pow((pow(x, 2) + pow(y, 2)), 0.5)
+
+
+point1 = Point(1, 2)
+point2 = Point(2, 3)
+print(point1 - point2)
+
+
+"""
+8. 自定义代表 克牌的 Card 类（包括花色和牌面值），为 Card 类提供自定义的比较大小的运
+算符支持 大小比较标准是先比较牌面值，如果牌面值相等则比较花色，花色大小规则为 黑桃＞
+hx＞草花＞方块
+"""
+
+
+class Card:
+    def __init__(self, value, suit):
+        self.value = value
+        self.suit = suit
+
+    def __lt__(self, other):
+        replace_value = {
+            '2': 0,
+            '3': 1,
+            '4': 2,
+            '5': 3,
+            '6': 4,
+            '7': 5,
+            '8': 6,
+            '9': 7,
+            '10': 8,
+            'J': 9,
+            'Q': 10,
+            'K': 11,
+            'A': 12,
+            '小王': 13,
+            '大王': 14
+        }
+        replace_suit = {
+            'spades': 1,
+            'hearts': 2,
+            'clubs': 3,
+            'diamonds': 4
+        }
+
+        # 重定义小于:<
+        if self.value == other.value:
+            if replace_suit[self.suit] > replace_suit[other.suit]:
+                return True
+            else:
+                return False
+        else:
+            if replace_value[self.value] > replace_value[other.value]:
+                return False
+            else:
+                return True
+
+    def __gt__(self, other):
+        # 重定义大于:>
+        if self < other:
+            return False
+        else:
+            return True
+
+
+card1 = Card('2', 'spades')
+card2 = Card('2', 'hearts')
+card3 = Card('2', 'clubs')
+card4 = Card('2', 'diamonds')
+card5 = Card('J', 'diamonds')
+print(card1 > card2)
+print(card2 > card3)
+print(card4 > card3)
+print(card1 > card5)
+print(card1 < card2)
+
+
+"""
+1. 提示用户输入自己的名字、年龄、身高，并将该用户信息以 JSON 格式保存在文件中。再写一
+个程序读取刚刚保存的 JSON 文件，恢复用户输入的信息。
+"""
+import json
+name = input('姓名：')
+age = int(input('年龄：'))
+height = int(input('身高：'))
+dict_person = {'姓名': name, '年龄': age, '身高': height}
+
+json_person = json.dumps(dict_person).encode('utf-8')
+
+print(type(json_person))
+print(json_person.decode('unicode_escape'))
+
+return_dict_person = json.loads(json_person)
+print(type(return_dict_person))
+print(return_dict_person['姓名'])
+
+
+"""
+2. 给定 1个字符串，该宇符~只包含数字 、英文逗号、英文点号，请使用英文逗号、英
+文点号将它们分割成多个子串
+"""
+
+
+def split_string(to_be_split_string):
+    list1 = to_be_split_string.split(',')
+    for i in range(len(list1)):
+        list2 = list1[0].split('.')
+        del list1[0]
+        list1 = list1 + list2
+    return list1
+
+
+print(split_string('12,.,44..324.325.5,45,3,.45,4'))
+
+
+"""
+3. 定义 1个正 表达式，用于验证国内的所有手机号码
+"""
+import re
+tel = input("请输入手机号:")
+# ret = re.match(r"1[35678]\d{9}", tel)
+# 由于手机号位数大于11位也能匹配成功，所以修改如下：
+ret = re.match(r"^1[35678]\d{9}$", tel)
+
+if ret:
+    print("匹配成功")
+else:
+    print("匹配失败")
+
+
+"""
+4. 提示用户输入 1个字符串，程序使用正则表达式获取该字符串中第一次重复出现的英文字
+包括大小写〉。
+['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+"""
+import re
+strings = input('输入字符串：')
+for i in strings:
+    if i.isalpha():
+        list1 = re.findall(i, strings, flags=re.I)
+        if len(list1) > 1:
+            print('重复字母的第一次出现：', i)
+            print('第一次出现重复的时候（前面已经存在一次，这是第二次出现）：', list1[1])
+            break
+
+
+"""
+5.提示用户输入一个字符串和一个子串，打印出该子串在字符串中出现的 start 和 end 位置；
+如果没有出现，则打印(-1,-1)。例如用户输入
+aaadaa
+aa
+程序输出：
+(0, 1)
+(1, 2)
+(4, 5)
+"""
+import re
+strings = input('输入一个字符串：')
+sub_str = input('输入一个子串：')
+m1 = re.search(sub_str, strings)
+if m1 is not None:
+    print(m1.span())
+else:
+    print((-1, -1))
+
+
+"""
+6. 提示用户输入两行，第 1行是所有学习 Python 的学员编号（以逗号隔开），第 2行是所有
+学习 Java 的学员编号（以逗号隔开〕，计算所有只学 Python 不学 Java 的学员的数量。
+"""
+string1 = input('输入两行,第1行是所有学习python的学员编号(以逗号隔开)')
+string2 = input('输入第二行,第2行是所有学习Java的学员编号(以逗号隔开)')
+list_python = string1.split(',')
+list_java = string2.split(',')
+list_only_python = []
+for i in list_python:
+    if i not in list_java:
+        list_only_python.append(i)
+
+print(len(list_only_python))
+
+
+
+"""
+7. 提示用户输入两行，第 1行是所有学习 Python 的学员编号（以逗号隔开），第 2行是所有
+学习 Java 的学员编号（以逗号隔开），计算既学 Python 又学 Java 的学员的数量。
+"""
+string1 = input('输入两行,第1行是所有学习python的学员编号(以逗号隔开)')
+string2 = input('输入第二行,第2行是所有学习Java的学员编号(以逗号隔开)')
+list_python = string1.split(',')
+list_java = string2.split(',')
+list_java_and_python = []
+for i in list_python:
+    if i in list_java:
+        list_java_and_python.append(i)
+
+print(len(list_java_and_python))
+print(list_java_and_python)
+
+
+"""
+8. 计算用户输入的两个带时区的时间戳字符串之间相差的秒数。例如用户输入：
+Sun 10 May 2015 13:54:36 - 0700
+Sun 10 May 2015 13:54:36 - 0000
+程序应该输出：
+25200
+"""
+import time
+string_time1 = input('输入时间1：')
+string_time2 = input('输入时间2：')
+# string_time1 = 'Sun 10 May 2015 13:54:36 - 0700'
+# string_time2 = 'Sun 10 May 2015 13:54:36 - 0000'
+string_time1_slice = string_time1[:-7]
+string_time2_slice = string_time2[:-7]
+string_time1_zone = string_time1[-4:-2]
+string_time2_zone = string_time2[-4:-2]
+
+struct_time1 = time.strptime(string_time1_slice, '%a %d %b %Y %H:%M:%S')
+struct_time2 = time.strptime(string_time2_slice, '%a %d %b %Y %H:%M:%S')
+print(struct_time1)
+time1_sec = int(time.mktime(struct_time1)) + int(string_time1_zone) * 3600
+time2_sec = int(time.mktime(struct_time2)) + int(string_time2_zone) * 3600
+print(time1_sec - time2_sec)
+
+"""
+9. 提示用户输入 1个字符串，程序要输出该字符串中出现次数最多的 3个字符，以及对应的
+出现次数。
+"""
+string1 = input('输入一个字符串：')
+dict1 = {}
+for i in string1:
+    if i not in dict1:
+        dict1[i] = 1
+    else:
+        dict1[i] += 1
+
+
+list_values = list(dict1.values())
+list_values.sort()
+print(list_values[-3:])
+print(dict1)
+print(list(dict1.keys())[list(dict1.values()).index(3)])
+for i in range(1, 4):
+    print(list(dict1.keys())[list(dict1.values()).index(list_values[-i])] + ': ' + str(list_values[-i]))
+
+
+
+"""
+10. 定义一 fibonacci(n) 函数，该函数返回包含n个元素 斐波那契数列的列表。再使用 lambda
+表达式定义 1个平方函数，程序最终输出斐波那契数列的前 n 个元素的平方值。
+"""
+
+
+def fibonacci(n):
+    list11 = []
+    first = 0
+    sec = 1
+    for i in range(n):
+        first, sec = sec, first + sec
+        list11.append(first)
+    return list11
+
+
+list1 = fibonacci(10)
+print(list1)
+# list2 = []
+# for j in list1:
+#     x = lambda j: j * j
+#     list2.append(x)
+# print(list2)
+y = map(lambda x: x*x, list1)
+print(y.__dir__())  # y是一个map对象，只有方法，没有属性
+print([e for e in y])
+

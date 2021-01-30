@@ -16,14 +16,14 @@ class Rectangle:
         self.height = height
 
     # 定义 setSize （）函数
-    def setsize(self, size):
+    def set_size(self, size):
         self.width, self.height = size
 
     # 定义 getSize （）函数
     def getsize(self):
         return self.width, self.height
     # 使用 property 定义属性
-    size = property(getsize, setsize)
+    size = property(getsize, set_size)
     # 定义＿round一方法，程序可调用 round （）函数将该对象执行四舍五入取整
 
     def __round__(self, digits=0):
@@ -36,6 +36,7 @@ class Rectangle:
 
 r = Rectangle(4.13, 5.56)
 # 对Rectangle对象执行四舍五入取整
-result = round(r, 1)
 print(r)  # Rectangle(width=4.1, height=5.6)
+result = r.__round__(1)
+
 print(result)  # Rectangle(width=4.1, height=5.6)
