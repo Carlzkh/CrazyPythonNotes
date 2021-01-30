@@ -15,7 +15,8 @@ flush：输出缓存，一般设置成flase就好
 name = 'Carl'
 age = 18
 print('姓名:', name, '年龄:', age, sep='\t', end='$')
-
+print(pow(0.9, 10))
+print(pow(2, 3))
 
 
 
