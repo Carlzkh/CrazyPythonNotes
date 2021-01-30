@@ -1,0 +1,114 @@
+Index: chapter_eight/attr_test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\n对于＿getattr （）方法：它只处理程序访问指定属性且该属性不存在的情形。比如程序访问\r\nwidth height 属性， Rectangle 对象本身包含该属性，因此该方法不会被触发。所以重写\r\n该方法只需处理我们需要“合成”的属性（比如 ze ），假如程序试图访问其他不存在的\r\n属性，当然直接引发 AttributeError 异常即可。\r\n〉对于__setattr__()方法，只要程序试图对指定属性赋值时总会触发该方法，因此无论程序是对\r\nwidth height 属性赋值，还是对 size 属性赋值，该方法都会被触发。所以重写该方法既\r\n要处理对 ize 性赋值的情形，也要处理对 width height 属性赋值的情形。尤其是处理对\r\nwidth height 属性赋值的时候，千万不要在__setattr__()方法中再次对 width height 赋值，\r\n因为对这两个属性赋值会再次触发__setattr__()方法，这样会让程序陷入死循环中。\r\n\r\n\"\"\"\r\n\r\n\r\nclass Rectangle:\r\n    def __init__(self, width, height):\r\n        self.width = width\r\n        self.height = height\r\n\r\n    def __setattr__(self, name, value):\r\n        \"\"\"\r\n        在类中对属性进行赋值操作时，python会自动调用__setattr__()函数，来实现对属性的赋值。\r\n        但是重写__setattr__()函数时要注意防止无限递归的情况出现，一般解决办法有两种，\r\n        一是用通过super()调用__setattr__()函数，\r\n        二是利用字典操作对相应键直接赋值。\r\n        \"\"\"\r\n        print('一一设置%s属性一一' % name)\r\n        if name == 'size':\r\n            self.width, self.height = value\r\n        else:\r\n            self.__dict__[name] = value  # 方法二\r\n            # super.__setattr__(self, name, value)  # 方法一，不加self会报错，加了又波浪线提示不合规，不知道怎么解决\r\n            # self.name = value  再次对width和height赋值会调用__setattr__()方法，造成无限循环\r\n\r\n    def __getattr__(self, name):\r\n        print('一一读取%s属性一一' % name)\r\n        if name == 'size':\r\n            return self.width, self.height\r\n        else:\r\n            raise AttributeError\r\n\r\n    def __delattr__(self, name):\r\n        print('__删除在%s属性__' % name)\r\n        if name == 'size':\r\n            self.__dict__['width'] = 0\r\n            self.__dict__['height'] = 0\r\n\r\n\r\nrect = Rectangle(3, 4)\r\nprint(rect.size)\r\nrect.size = 6, 8\r\nprint(rect.width)\r\ndel rect.size\r\nprint(rect.size)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_eight/attr_test.py	(revision 4deb1b23250b1f2e5945f245f641f9392a89d06e)
++++ chapter_eight/attr_test.py	(date 1592313893702)
+@@ -8,7 +8,6 @@
+ 要处理对 ize 性赋值的情形，也要处理对 width height 属性赋值的情形。尤其是处理对
+ width height 属性赋值的时候，千万不要在__setattr__()方法中再次对 width height 赋值，
+ 因为对这两个属性赋值会再次触发__setattr__()方法，这样会让程序陷入死循环中。
+-
+ """
+ 
+ 
+@@ -51,4 +50,4 @@
+ rect.size = 6, 8
+ print(rect.width)
+ del rect.size
+-print(rect.size)
++print(rect.size)
+\ No newline at end of file
+Index: chapter_six/class_object.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Person:\r\n    \"\"\" 定义一个person类\"\"\"\r\n    hair = 'black'\r\n\r\n    def __init__(self, name, age):\r\n        self.name = name\r\n        self.age = age\r\n\r\n    # @staticmethod    设置静态方法的话，self也需要传值\r\n    def say(self, words):  # 不使用self属性的话，函数会被建议为静态函数，所以函数名下有下划线\r\n        print(words)\r\n\r\n    @staticmethod\r\n    def run(self, words):\r\n        print(words)\r\n\r\n    @staticmethod\r\n    def eat(food):\r\n        print(food)\r\n\r\n\r\na = Person('Carl', 18)\r\nprint(a.name, a.age)\r\na.say('hello')\r\na.run('hello', 7)\r\na.eat('apple')\r\na.height = 180  # 为对象新加实例变量\r\ndel a.name  # 删除对象的实例变量\r\nprint(a.height)\r\n# print(a.name)  # 对象的实例变量被删除，访问会报错\r\n\r\n\r\ndef info(self):\r\n    print('====================')\r\n\r\n\r\na.foo = info\r\na.foo('i')\r\n\r\n\r\nclass User:\r\n    def walk(self):\r\n        print(self, 'is working slowly')\r\n\r\n\r\nUser.walk(1)  # 不传参会报错,传参会把参数赋给self变量\r\nu = User()  # 实例化对象\r\nUser.walk(u)  # 手动绑定对象到实例方法，结果等于u.walk()\r\nu.walk()  # 对象调用方法，绑定后就不需要传递self参数了\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_six/class_object.py	(revision 4deb1b23250b1f2e5945f245f641f9392a89d06e)
++++ chapter_six/class_object.py	(date 1592313720794)
+@@ -47,15 +47,3 @@
+ u = User()  # 实例化对象
+ User.walk(u)  # 手动绑定对象到实例方法，结果等于u.walk()
+ u.walk()  # 对象调用方法，绑定后就不需要传递self参数了
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Index: .idea/CrazyPythonNotes.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/venv\" />\r\n    </content>\r\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.7\" jdkType=\"Python SDK\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"module\" module-name=\"python_one\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/CrazyPythonNotes.iml	(revision 4deb1b23250b1f2e5945f245f641f9392a89d06e)
++++ .idea/CrazyPythonNotes.iml	(date 1592313720812)
+@@ -4,7 +4,7 @@
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/venv" />
+     </content>
+-    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
++    <orderEntry type="jdk" jdkName="Python 3.8 (CrazyPythonNotes)" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+     <orderEntry type="module" module-name="python_one" />
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1592313720804)
++++ .idea/misc.xml	(date 1592313720804)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (CrazyPythonNotes)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: chapter_eight/attr_test2.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_eight/attr_test2.py	(date 1592315057485)
++++ chapter_eight/attr_test2.py	(date 1592315057485)
+@@ -0,0 +1,26 @@
++class User:
++    def __init__(self, name, age):
++        self.name = name
++        self.age = age
++
++    # 重写__setattr__()方法对设置的属性值进行检查,必须写前后的双下划线
++    # __setattr__()和setattr()完全不同，一定要注意前后的双下划线
++    def __setattr__(self, name, value):
++        # 如果正在设置 name 属性
++        if name == 'name':
++            if 2 < len(value) <= 8:
++                self.__dict__['name'] = value
++            else:
++                raise ValueError('name的长度必须在2-8之间')
++        elif name == 'age':
++            if 10 < value < 60:
++                self.__dict__['age'] = value
++            else:
++                raise ValueError('age的值必须在10-60之间')
++
++
++u = User('crazy', 24)
++print(u.name)
++print(u.age)
++# u.name = 'disappointment'  # 引发异常
++# u.age = 2  # 引发异常
