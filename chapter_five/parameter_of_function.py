@@ -59,7 +59,7 @@ def test(*books, x, y, z=3, **scores):
     print(scores)
 
 
-test('疯狂python', '疯狂Java', 2, x='x', y='y', 语文=89, 数学=99)
+test('疯狂python', '疯狂Java', 2, x='x', y='y', 语文=89, 数学=99, huaxue=1)
 
 
 '''
