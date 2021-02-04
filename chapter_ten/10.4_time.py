@@ -26,6 +26,7 @@ print(time.timezone)  # 在国内东八区输出-28800  # 返回本地时区的�
 print(time.tzname)  # 返回本地时区的名字
 a = time.tzname[0]
 c = time.tzname[1]
-b = a.encode('latin-1').decode('gbk')
+b = a.encode('latin-1').decode('gb2312')
 d = c.encode('latin-1').decode('gbk')
+# e = bytes(a).decode('gbk')
 print(b, d)
