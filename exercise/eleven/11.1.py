@@ -2,7 +2,7 @@
 1. 使用 Tkinter 编写图形界面的计算器。
 """
 import tkinter
-from tkinter import ttk
+# from tkinter import ttk
 
 
 win = tkinter.Tk()
@@ -16,7 +16,7 @@ entry.pack(side='top', pady=10)
 p = tkinter.Frame(win)
 p.pack(side='top')
 
-names = ('1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '*', '0', '.', '/')
+# names = ('1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '*', '0', '.', '/')
 global b
 
 
