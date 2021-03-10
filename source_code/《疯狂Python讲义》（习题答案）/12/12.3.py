@@ -16,7 +16,7 @@
 from pathlib import *
 import re, os, sys, codecs
 
-phone_pattern = '1[358][0-9]\d{8}|14[579]\d{8}|16[6]\d{8}|17[0135678]\d{8}|19[89]\d{8}'
+phone_pattern = '1[358][0-9]\d{9}|14[579]\d{8}|16[6]\d{8}|17[0135678]\d{8}|19[89]\d{8}'
 
 dir_str = input('请输入文件路径: ').strip()
 p = Path(dir_str)
