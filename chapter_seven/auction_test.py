@@ -1,6 +1,8 @@
 """在使用 raise 语句时可以不带参数，此时 raise 语句处于 except 块中，它将
 会自动引发当前上下文激活的异常 否则，通常默认引发 RuntimeError 异常
 """
+
+
 class AuctionException(Exception):
     pass
 
