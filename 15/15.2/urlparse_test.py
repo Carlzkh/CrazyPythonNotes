@@ -13,7 +13,7 @@ print('查询字符串 ：', result.query, result[4])
 print('fragment ：', result.fragment, result[5])
 print(result .geturl())
 
-# 解析查询字符串 返回 diet
+# 解析查询字符串 返回 dict
 result = parse_qs('name=fkit&name=%E7%96%AF%E7%8B%82java&age=12')
 print(result)
 # 解析查询字符串 返回 list
