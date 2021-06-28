@@ -5,8 +5,8 @@ from pygame.sprite import Sprite
 from pygame.sprite import Group
 from bullet import *
 
-COMMON_SPEED_THRESHOLD = 10
-MAN_SPEED_THRESHOLD = 8
+COMMON_SPEED_THRESHOLD = 6
+MAN_SPEED_THRESHOLD = 4
 
 TYPE_BOMB = 1
 TYPE_FLY = 2
@@ -111,7 +111,7 @@ class Monster(Sprite):
         if self.type == TYPE_FLY:
             draw_y = self.y - 30
         # 创建子弹对象
-        bullet = Bullet(self.bullet_type(), draw_x, draw_y, player.DIR_LEFT)
+        bullet = Bullet(self.bullet_type(), draw_x, draw_y, Player.DIR_LEFT)
         # 将子弹对象添加到该怪物发射的子弹Group
         self.bullet_list.add(bullet)
 

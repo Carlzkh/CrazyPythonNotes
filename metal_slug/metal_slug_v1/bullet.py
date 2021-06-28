@@ -1,6 +1,5 @@
-import pygame
 from pygame.sprite import Sprite
-import player
+from player import Player
 # 定义代表子弹 型的常量（ 如果程 需要增加更 的子弹，则只需在此处添加常量即可）
 BULLET_TYPE_1 = 1
 BULLET_TYPE_2 = 2
@@ -32,7 +31,7 @@ class Bullet (Sprite):
 
     def speed_x(self):
         # 根据玩家的方向来计算子弹方向和移动方向
-        sign = 1 if self.dir == player.DIR_RIGHT else -1
+        sign = 1 if self.dir == Player.DIR_RIGHT else -1
         # 对于第种子弹，以12为基数来计算其速度
         if self.type == BULLET_TYPE_1:
             return 12 * sign
@@ -52,7 +51,6 @@ class Bullet (Sprite):
 
     def speed_y(self):
         # 如果selfy_accelate不为 ，贝self.y_accelate作为方向上的速度
-
         if self.y_accelate != 0:
             return self.y_accelate
         # 此处控制只有第种子弹才有方向上的速度（子弹会斜着向下移动〉
@@ -60,3 +58,7 @@ class Bullet (Sprite):
             return 0
         elif self.type == BULLET_TYPE_3:
             return 6
+
+    def move(self):
+        self.x += self.speed_x()
+        self.y += self.speed_y()
